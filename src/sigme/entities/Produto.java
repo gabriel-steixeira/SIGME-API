@@ -1,9 +1,11 @@
+package sigme.entities;
+
 import java.time.LocalDate;
 
 /**
  * Produto
  * Classe utilizada para persistir informações sobre os produtos da loja virtual
- * 
+ *
  * @author Gabriel Souza Teixeira
  * @version 1.0
  * @since 01/04/2024
@@ -25,7 +27,7 @@ public class Produto {
 
     /**
      * Construtor da classe Produto
-     * 
+     *
      * @param idProduto
      * @param nomeProduto
      * @param marca
@@ -41,8 +43,8 @@ public class Produto {
      * @param dataAlteracao
      */
     public Produto(int idProduto, String nomeProduto, String marca, String categoria, double precoUnitario,
-            int quantidadeEstoque, LocalDate dataValidade, LocalDate dataLote, String linha, String usuarioCadastro,
-            String usuarioAlteracao, LocalDate dataCadastro, LocalDate dataAlteracao) {
+                   int quantidadeEstoque, LocalDate dataValidade, LocalDate dataLote, String linha, String usuarioCadastro,
+                   String usuarioAlteracao, LocalDate dataCadastro, LocalDate dataAlteracao) {
         this.idProduto = idProduto;
         this.nomeProduto = nomeProduto;
         this.marca = marca;
@@ -71,7 +73,7 @@ public class Produto {
      * @return Valor inteiro, 0 ou 1, para representarem FRACASSO ou SUCESSO
      */
     public int cadastrarProduto(String nomeProduto, String marca, String categoria, double precoUnitario,
-            int quantidadeEstoque, LocalDate dataValidade, LocalDate dataLote, String linha) {
+                                int quantidadeEstoque, LocalDate dataValidade, LocalDate dataLote, String linha) {
         Produto novoProduto = new Produto(0, nomeProduto, marca, categoria, precoUnitario, quantidadeEstoque,
                 dataValidade, dataLote, linha, usuarioCadastro, usuarioAlteracao, dataCadastro, dataAlteracao);
         boolean sucesso = true;
@@ -92,7 +94,7 @@ public class Produto {
      * @return Valor inteiro, 0 ou 1, para representarem FRACASSO ou SUCESSO
      */
     public int editarProduto(int idProduto, String nomeProduto, String marca, String categoria, double precoUnitario,
-            int quantidadeEstoque, LocalDate dataValidade, LocalDate dataLote, String linha) {
+                             int quantidadeEstoque, LocalDate dataValidade, LocalDate dataLote, String linha) {
         boolean sucesso = false;
         // Pesquisar produto no banco de dados -> retorna objeto
         if (getIdProduto() == idProduto) {
@@ -106,7 +108,7 @@ public class Produto {
             setDataValidade(dataValidade);
             setDataLote(dataLote);
             setLinha(linha);
-            sucesso = true;    
+            sucesso = true;
         }
         return (sucesso) ? 1 : 0;
     }
@@ -192,7 +194,7 @@ public class Produto {
     public void setIdProduto(int idProduto) {
         this.idProduto = idProduto;
     }
-    
+
     /**
      * Obter nome do produto
      * @return Nome do produto
