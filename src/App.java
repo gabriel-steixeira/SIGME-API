@@ -2,11 +2,6 @@ import sigme.controllers.ProdutoController;
 import sigme.entities.Produto;
 import java.time.LocalDate;
 
-// import SIGME.src.entities.Produto;
-// import java.sql.Date;
-
-// import entities.;
-
 public class App {
     /**
     * @param args
@@ -14,8 +9,6 @@ public class App {
     */
 
     public static void main(String[] args) throws Exception {
-        // System.out.println("Welcome to our system :)");
-        
         LocalDate dataValidade = LocalDate.of(2024, 5, 16);
         LocalDate dataLote = LocalDate.of(2024, 5, 16);
         LocalDate dataCadastro = LocalDate.of(2024, 5, 16);
@@ -25,9 +18,6 @@ public class App {
         Produto produto3 = new Produto(3, "Sabonete", "Dovi", "Higiene Pessoal", 3.8, 100, dataValidade, dataLote, "1", "gabriel.teixeira", "", dataCadastro, dataAlteracao);
 
         ProdutoController controller = new ProdutoController();
-//        controller.produtos.add(produto1);
-//        controller.produtos.add(produto2);
-//        controller.produtos.add(produto3);
 
         // Listando os produtos
         System.out.println("Lista de Produtos:");
@@ -40,6 +30,7 @@ public class App {
         controller.cadastrarProduto(produto1);
         controller.cadastrarProduto(produto2);
         controller.cadastrarProduto(produto3);
+        controller.cadastrarProduto(produto1);
 
         System.out.println("Lista de Produtos:");
         for (Produto produto : controller.visualizarProdutos()) { // Erro pois a lista é privada -> Ester vai criar o método de visualizar a lista, então esse for será desnecessário
