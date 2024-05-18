@@ -1,6 +1,6 @@
 package sigme.entities;
 
-import java.time.LocalDate;
+import java.sql.Date;
 
 /**
  * Produto
@@ -11,19 +11,20 @@ import java.time.LocalDate;
  * @since 01/04/2024
  */
 public class Produto {
-    public int idProduto;
-    public String nomeProduto;
-    public String marca;
-    public String categoria;
-    public double precoUnitario;
-    public int quantidadeEstoque;
-    public LocalDate dataValidade;
-    public LocalDate dataLote;
-    public String linha;
-    public String usuarioCadastro;
-    public String usuarioAlteracao;
-    public LocalDate dataCadastro;
-    public LocalDate dataAlteracao;
+    private int idProduto;
+    private String nomeProduto;
+    private String marca;
+    private String categoria;
+    private double precoUnitario;
+    private int quantidadeEstoque;
+    private Date dataValidade;
+    private Date dataLote;
+    private String linha;
+    private String usuarioCadastro;
+    private String usuarioAlteracao;
+    private Date dataCadastro;
+    private Date dataAlteracao;
+    private int idFornecedor;
 
     /**
      * Construtor da classe Produto
@@ -43,8 +44,8 @@ public class Produto {
      * @param dataAlteracao
      */
     public Produto(int idProduto, String nomeProduto, String marca, String categoria, double precoUnitario,
-                   int quantidadeEstoque, LocalDate dataValidade, LocalDate dataLote, String linha, String usuarioCadastro,
-                   String usuarioAlteracao, LocalDate dataCadastro, LocalDate dataAlteracao) {
+                   int quantidadeEstoque, Date dataValidade, Date dataLote, String linha, String usuarioCadastro,
+                   String usuarioAlteracao, Date dataCadastro, Date dataAlteracao, int idFornecedor) {
         this.idProduto = idProduto;
         this.nomeProduto = nomeProduto;
         this.marca = marca;
@@ -58,6 +59,7 @@ public class Produto {
         this.usuarioAlteracao = usuarioAlteracao;
         this.dataCadastro = dataCadastro;
         this.dataAlteracao = dataAlteracao;
+        this.idFornecedor = idFornecedor;
     }
 
     /**
@@ -73,9 +75,9 @@ public class Produto {
      * @return Valor inteiro, 0 ou 1, para representarem FRACASSO ou SUCESSO
      */
     public int cadastrarProduto(String nomeProduto, String marca, String categoria, double precoUnitario,
-                                int quantidadeEstoque, LocalDate dataValidade, LocalDate dataLote, String linha) {
+                                int quantidadeEstoque, Date dataValidade, Date dataLote, String linha) {
         Produto novoProduto = new Produto(0, nomeProduto, marca, categoria, precoUnitario, quantidadeEstoque,
-                dataValidade, dataLote, linha, usuarioCadastro, usuarioAlteracao, dataCadastro, dataAlteracao);
+                dataValidade, dataLote, linha, usuarioCadastro, usuarioAlteracao, dataCadastro, dataAlteracao, idFornecedor);
         boolean sucesso = true;
         // Salvar no banco de dados -> atribui valor ao sucesso
         return (sucesso) ? 1 : 0;
@@ -94,7 +96,7 @@ public class Produto {
      * @return Valor inteiro, 0 ou 1, para representarem FRACASSO ou SUCESSO
      */
     public int editarProduto(int idProduto, String nomeProduto, String marca, String categoria, double precoUnitario,
-                             int quantidadeEstoque, LocalDate dataValidade, LocalDate dataLote, String linha) {
+                             int quantidadeEstoque, Date dataValidade, Date dataLote, String linha, int idFornecedor) {
         boolean sucesso = false;
         // Pesquisar produto no banco de dados -> retorna objeto
         if (getIdProduto() == idProduto) {
@@ -108,6 +110,7 @@ public class Produto {
             setDataValidade(dataValidade);
             setDataLote(dataLote);
             setLinha(linha);
+            setIdFornecedor(idFornecedor);
             sucesso = true;
         }
         return (sucesso) ? 1 : 0;
@@ -121,7 +124,7 @@ public class Produto {
     public Produto visualizarProduto(int idProduto) {
         // Pesquisar produto no banco de dados
         return new Produto(idProduto, nomeProduto, marca, categoria, precoUnitario, quantidadeEstoque, dataValidade,
-                dataLote, linha, usuarioCadastro, usuarioAlteracao, dataCadastro, dataAlteracao);
+                dataLote, linha, usuarioCadastro, usuarioAlteracao, dataCadastro, dataAlteracao, idFornecedor);
     }
 
     /**
@@ -132,7 +135,7 @@ public class Produto {
     public Produto buscaProdutoNome(String nomeProduto) {
         // Pesquisar produto no banco de dados
         return new Produto(idProduto, nomeProduto, marca, categoria, precoUnitario, quantidadeEstoque, dataValidade,
-                dataLote, linha, usuarioCadastro, usuarioAlteracao, dataCadastro, dataAlteracao);
+                dataLote, linha, usuarioCadastro, usuarioAlteracao, dataCadastro, dataAlteracao, idFornecedor);
     }
 
     /**
@@ -143,7 +146,7 @@ public class Produto {
     public Produto buscaProdutoMarca(String marca) {
         // Pesquisar produto no banco de dados
         return new Produto(idProduto, nomeProduto, marca, categoria, precoUnitario, quantidadeEstoque, dataValidade,
-                dataLote, linha, usuarioCadastro, usuarioAlteracao, dataCadastro, dataAlteracao);
+                dataLote, linha, usuarioCadastro, usuarioAlteracao, dataCadastro, dataAlteracao, idFornecedor);
     }
 
     /**
@@ -154,7 +157,7 @@ public class Produto {
     public Produto buscaProdutoCategoria(String categoria) {
         // Pesquisar produto no banco de dados
         return new Produto(idProduto, nomeProduto, marca, categoria, precoUnitario, quantidadeEstoque, dataValidade,
-                dataLote, linha, usuarioCadastro, usuarioAlteracao, dataCadastro, dataAlteracao);
+                dataLote, linha, usuarioCadastro, usuarioAlteracao, dataCadastro, dataAlteracao, idFornecedor);
     }
 
     /**
@@ -279,7 +282,7 @@ public class Produto {
      * Obter Data da Validade do produto
      * @return Data da Validade do produto
      */
-    public LocalDate getDataValidade() {
+    public Date getDataValidade() {
         return dataValidade;
     }
 
@@ -287,7 +290,7 @@ public class Produto {
      * Atribuir valor a Data da Validade do produto
      * @param dataValidade
      */
-    public void setDataValidade(LocalDate dataValidade) {
+    public void setDataValidade(Date dataValidade) {
         this.dataValidade = dataValidade;
     }
 
@@ -295,7 +298,7 @@ public class Produto {
      * Obter Data do Lote do produto
      * @return Data do Lote do produto
      */
-    public LocalDate getDataLote() {
+    public Date getDataLote() {
         return dataLote;
     }
 
@@ -303,7 +306,7 @@ public class Produto {
      * Atribuir valor a DataLote do produto
      * @param dataLote
      */
-    public void setDataLote(LocalDate dataLote) {
+    public void setDataLote(Date dataLote) {
         this.dataLote = dataLote;
     }
 
@@ -359,7 +362,7 @@ public class Produto {
      * Obter Data de Cadastro do produto
      * @return Data de Cadastro do produto
      */
-    public LocalDate getDataCadastro() {
+    public Date getDataCadastro() {
         return dataCadastro;
     }
 
@@ -367,7 +370,7 @@ public class Produto {
      * Atribuir valor a data de cadastro do produto
      * @param dataCadastro
      */
-    public void setDataCadastro(LocalDate dataCadastro) {
+    public void setDataCadastro(Date dataCadastro) {
         this.dataCadastro = dataCadastro;
     }
 
@@ -375,7 +378,7 @@ public class Produto {
      * Obter Data de Alteração do produto
      * @return Data de Alteração do produto
      */
-    public LocalDate getDataAlteracao() {
+    public Date getDataAlteracao() {
         return dataAlteracao;
     }
 
@@ -383,7 +386,23 @@ public class Produto {
      * Atribuir valor a data de alteração do produto
      * @param dataAlteracao
      */
-    public void setDataAlteracao(LocalDate dataAlteracao) {
+    public void setDataAlteracao(Date dataAlteracao) {
         this.dataAlteracao = dataAlteracao;
+    }
+
+    /**
+     * Obter idFornecedor
+     * @return idFornecedor
+     */
+    public int getIdFornecedor() {
+        return idFornecedor;
+    }
+
+    /**
+     * Atribuir valor ao idFornecedor
+     * @param idFornecedor
+     */
+    public void setIdFornecedor(int idFornecedor) {
+        this.idFornecedor = idFornecedor;
     }
 }
