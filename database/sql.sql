@@ -142,3 +142,4 @@ ALTER TABLE APP_SIGME_SIS.venda
         REFERENCES usuario ( idusuario );
 
 
+        
