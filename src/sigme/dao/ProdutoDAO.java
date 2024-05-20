@@ -38,4 +38,21 @@ public class ProdutoDAO {
             return false;
         }
     }
+
+    public boolean editarProduto(Produto produto) throws SQLException {
+        String sql = "UPDATE produtos SET nomeProduto = ?, marca = ?, categoria = ?, precoUnitario = ?, quantidadeEstoque = ?, dataValidade = ?, dataLote = ?, linha = ?, idFornecedor = ? WHERE idProduto = ?";
+        try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
+            stmt.setString(1, produto.getNomeProduto());
+            stmt.setString(2, produto.getMarca());
+            stmt.setString(3, produto.getCategoria());
+            stmt.setDouble(4, produto.getPrecoUnitario());
+            stmt.setInt(5, produto.getQuantidadeEstoque());
+            stmt.setDate(6, new java.sql.Date(produto.getDataValidade().getTime()));
+            stmt.setDate(7, new java.sql.Date(produto.getDataLote().getTime()));
+            stmt.setString(8, produto.getLinha());
+            stmt.setInt(9, produto.getIdFornecedor());
+            stmt.setInt(10, produto.getIdProduto());
+            return stmt.executeUpdate() > 0;
+        }
+    }
 }
