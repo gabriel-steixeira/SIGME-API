@@ -23,6 +23,10 @@ public class ProdutoController {
         return store.CadastrarProduto(produto);
     }
 
+    public boolean editarProduto(Produto produto) throws SQLException {
+        return store.editarProduto(produto);
+    }
+
 //    public List<Produto> visualizarProdutos() {
 //        return produtos;
 //    }
