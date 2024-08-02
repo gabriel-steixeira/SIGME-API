@@ -13,7 +13,7 @@ import sigme.entities.Produto;
 public class ProdutoController {
     private Connection conexao;
     private ProdutoDAO store;
-
+    
     public ProdutoController() throws SQLException {
         conexao = new ConexaoBanco().Conectar();
         store = new ProdutoDAO();
@@ -52,7 +52,7 @@ public class ProdutoController {
     // }
 
     // Método para excluir um produto pelo ID
-    public void excluirProduto(int id) {
+    // public void excluirProduto(int id) {
         // Iterator<Produto> iterator = produtos.iterator();
         // while (iterator.hasNext()) {
         // Produto produto = iterator.next();
@@ -62,6 +62,25 @@ public class ProdutoController {
         // return;
         // }
         // }
-        System.out.println("Produto não encontrado com o ID: " + id);
+    public boolean editarProduto(Produto produto) throws SQLException {
+        return store.editarProduto(produto);
     }
+
+//    public List<Produto> visualizarProdutos() {
+//        return produtos;
+//    }
+
+    // Método para excluir um produto pelo ID
+    // public void excluirProduto(int id) {
+//        Iterator<Produto> iterator = produtos.iterator();
+//        while (iterator.hasNext()) {
+//            Produto produto = iterator.next();
+//            if (produto.getIdProduto() == id) {
+//                iterator.remove();
+//                System.out.println("Produto excluído: " + produto.getNomeProduto());
+//                return;
+//            }
+//        }
+    //     System.out.println("Produto não encontrado com o ID: " + id);
+    // }
 }

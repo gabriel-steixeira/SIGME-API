@@ -140,6 +140,3 @@ ALTER TABLE APP_SIGME_SIS.venda
 ALTER TABLE APP_SIGME_SIS.venda
     ADD CONSTRAINT venda_usuario_fk FOREIGN KEY ( idvenda )
         REFERENCES usuario ( idusuario );
-
-
-        

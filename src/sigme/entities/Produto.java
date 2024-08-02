@@ -242,18 +242,34 @@ public class Produto {
         this.quantidadeEstoque = quantidadeEstoque;
     }
 
+    /**
+     * Obter Data da Validade do produto
+     * @return Data da Validade do produto
+     */
     public Date getDataValidade() {
         return dataValidade;
     }
 
+    /**
+     * Atribuir valor a Data da Validade do produto
+     * @param dataValidade
+     */
     public void setDataValidade(Date dataValidade) {
         this.dataValidade = dataValidade;
     }
 
+    /**
+     * Obter Data do Lote do produto
+     * @return Data do Lote do produto
+     */
     public Date getDataLote() {
         return dataLote;
     }
 
+    /**
+     * Atribuir valor a DataLote do produto
+     * @param dataLote
+     */
     public void setDataLote(Date dataLote) {
         this.dataLote = dataLote;
     }
@@ -282,26 +298,50 @@ public class Produto {
         this.usuarioAlteracao = usuarioAlteracao;
     }
 
+    /**
+     * Obter Data de Cadastro do produto
+     * @return Data de Cadastro do produto
+     */
     public Date getDataCadastro() {
         return dataCadastro;
     }
 
+    /**
+     * Atribuir valor a data de cadastro do produto
+     * @param dataCadastro
+     */
     public void setDataCadastro(Date dataCadastro) {
         this.dataCadastro = dataCadastro;
     }
 
+    /**
+     * Obter Data de Alteração do produto
+     * @return Data de Alteração do produto
+     */
     public Date getDataAlteracao() {
         return dataAlteracao;
     }
 
+    /**
+     * Atribuir valor a data de alteração do produto
+     * @param dataAlteracao
+     */
     public void setDataAlteracao(Date dataAlteracao) {
         this.dataAlteracao = dataAlteracao;
     }
 
+    /**
+     * Obter idFornecedor
+     * @return idFornecedor
+     */
     public int getIdFornecedor() {
         return idFornecedor;
     }
 
+    /**
+     * Atribuir valor ao idFornecedor
+     * @param idFornecedor
+     */
     public void setIdFornecedor(int idFornecedor) {
         this.idFornecedor = idFornecedor;
     }
